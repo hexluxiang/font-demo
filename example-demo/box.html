@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标准盒子+怪异盒子</title>
+</head>
+<style>
+    .item-1 {
+        background-color: aliceblue;
+        height: 100px;
+        width: 100px;
+        border: 1px solid silver;
+        padding: 10px;
+        margin: 10px;
+        box-sizing: content-box;
+    }
+
+    .item-2 {
+        background-color: azure;
+        height: 100px;
+        width: 100px;
+        border: 2px solid silver;
+        padding: 10px;
+        margin: 10px;
+        box-sizing: border-box;
+    }
+</style>
+
+<body>
+    <div class="item-1">标准</div>
+    <div class="item-2">怪异</div>
+</body>
+
+</html>

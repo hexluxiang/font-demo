@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垂直居中</title>
+</head>
+<style>
+    /**
+    垂直居中 
+    */
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        margin: 5px;
+    }
+
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(247 247 247);
+        border: 1px solid silver;
+    }
+
+
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        text-align: center;
+    }
+
+    .s1 {
+        line-height: 100px;
+    }
+
+    .f2 {
+        position: relative;
+    }
+
+    .s2 {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .f3 {
+        display: flex;
+        /* justify-content: center; */
+        align-items: center;
+    }
+
+    .f4 {
+        display: flex;
+    }
+
+    .s4 {
+        margin: auto 0;
+    }
+</style>
+
+<body>
+    <div>f1 line-height 行内元素</div>
+    <div class="father f1">
+        <span class="son s1">我是一串垂直居中的文字</span>
+    </div>
+    <div>f2 positon</div>
+    <div class="father f2">
+        <div class="son s2">son</div>
+    </div>
+    <div>f3 flex</div>
+    <div class="father f3">
+        <div class="son s3">son</div>
+    </div>
+
+    <div>f4 margin</div>
+    <div class="father f4">
+        <div class="son s4">son</div>
+    </div>
+</body>
+
+</html>

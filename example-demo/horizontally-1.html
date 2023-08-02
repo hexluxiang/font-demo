@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水平居中</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .father {
+        width: 500px;
+        height: 500px;
+        background-color: rgb(247 247 247);
+        border: 1px solid silver;
+    }
+
+
+    .son {
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        text-align: center;
+    }
+
+    .s1 {
+        margin: 0 auto;
+    }
+
+    .f2 {
+        display: flex;
+        justify-content: center;
+        /* align-items: center;  加上这个属性是水平垂直居中*/ 
+    }
+
+    .f3 {
+        position: relative;
+    }
+
+    .s3 {
+        width: 25%;
+        height: 25%;
+        position: absolute;
+        left: 50%;
+        /* top: 50%; */
+        transform: translateX(-50%);
+    }
+
+</style>
+
+<body>
+    <div>f1 margin</div>
+    <div class="father f1">
+        <div class="son s1">son</div>
+    </div>
+    <div>f2 flex</div>
+    <div class="father f2">
+        <div class="son s2">son</div>
+    </div>
+    <div>f3 transform</div>
+    <div class="father f3">
+        <div class="son s3">son</div>
+    </div>
+</body>
+
+</html>

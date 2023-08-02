@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>两栏布局</title>
+</head>
+<style>
+    .wrap {
+        height: 500px;
+        width: 100%;
+    }
+
+    .left {
+        height: 100%;
+        width: 300px;
+        background-color: antiquewhite;
+    }
+
+
+    .right {
+        height: 100%;
+        background-color: aqua;
+    }
+
+
+    .w1 {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .l1 {
+        flex: 0 0 300px;
+
+    }
+
+    .r1 {
+        flex: 1;
+    }
+    /*=========================================================================================*/
+    .l2 {
+        float: left;
+    }
+
+    .r2 {
+        margin-left: 300px;
+    }
+</style>
+
+<body>
+    <div>flex</div>
+    <div class="wrap w1">
+        <div class="left l1">左</div>
+        <div class="right r1">右</div>
+    </div>
+    <div>float</div>
+    <div class="wrap">
+        <div class="left l2">左边</div>
+        <div class="right r2">右边</div>
+    </div>
+</body>
+
+</html>
