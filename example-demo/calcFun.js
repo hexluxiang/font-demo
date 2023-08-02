@@ -48,7 +48,7 @@ const sortLetter = (str, idx) => {
 
 // D-7
 const sortNum = str => {
-    const arr = str.split(',').map((item, index) => [item, index]).sort((a, b) => b[0] -  a[0]);
+    const arr = str.split(',').map((item, index) => [item, index]).sort((a, b) => b[0] - a[0]);
     const n = arr.length;
     const ids = new Array(n);
     for (var i = 0; i < n; i++) {
@@ -57,3 +57,35 @@ const sortNum = str => {
     return ids.join(',');
 }
 // console.log(sortNum('9,3,5'));
+
+// B-77  奖牌排行
+const getCountryList = (nums, ...args) => {
+    var arrs = args.map(item => {
+        var l = item.split(' ');
+        var obj = {
+            name: l[0],
+            gi: l[1] - 0,
+            si: l[2] - 0,
+            bi: l[3] - 0,
+            total: parseInt(l[1]) + parseInt(l[2]) + parseInt(l[3])
+        }
+        return obj;
+    }).sort((a, b) => {
+        return b.gi !== a.gi
+            ? b.gi - a.gi
+            : b.si !== a.si
+                ? b.si - a.si
+                : b.bi !== a.bi
+                    ? b.bi - a.bi
+                    : a.name === b.name
+                        ? 0
+                        : a.name > b.name
+                            ? 1
+                            : -1;
+
+    }).forEach(item => {
+        console.log(item.name)
+    })
+}
+
+console.log(getCountryList(4, 'kor 1 4 1', 'china 10 20 30', 'jp 1 2 3', 'us 100 1 1'));
