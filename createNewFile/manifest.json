@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "跨组织知识创建工具",
+    "version": "2.0",
+    "icons": {
+        "16": "images/gooleIcon.png",
+        "48": "images/gooleIcon.png",
+        "128": "images/gooleIcon.png"
+      },
+  
+    "permissions": [
+      "activeTab",
+      "scripting",
+      "tabs",
+      "storage",
+      "contextMenus"
+    ],
+
+    "host_permissions": [
+        "https://open.feishu.cn/*",
+        "http://192.168.22.41:5173/getToken/*",
+        "http://192.168.22.42:8001/*"
+    ],
+    
+  
+    "background": {
+        "service_worker": "scripts/background.js"
+    },
+  
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "create-file",
+        "default_icon": "images/gooleIcon.png"
+      },
+      "content_scripts": [
+        {
+          "matches": ["<all_urls>"],
+          "js": ["scripts/content.js", "scripts/jquery-3.3.1.min.js"],     
+          "css": ["styles/common.css"],     
+          "run_at": "document_end"
+        }
+      ]
+  }
