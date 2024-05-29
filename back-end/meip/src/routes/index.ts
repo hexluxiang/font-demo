@@ -1,6 +1,14 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Autor: Helx
+ * @Date: 2024-05-01 12:04:16
+ * @LastEditors: Helx
+ * @LastEditTime: 2024-05-05 17:10:43
+ */
 import express from "express";
 import { db, closeSqliteDb } from "../database";
-import Summary from "./summary";
+import Summary from "./Summary/summary";
 import FixModule from "./fixModule";
 import CreateNextModule from './createNextModule'
 const router = express.Router();
@@ -22,7 +30,7 @@ router.get("/addUser", (req, res) => {
         });
         res.status(200).json({ code: 0, data: "", msg: "success" });
     } catch (error) {
-        res.status(400).json({ code: 1, data: "", msg: error });
+        res.status(400).json({ code: 1, data: "", msg: String(error)});
     }
 });
 
@@ -32,7 +40,7 @@ router.get("/getUser", (req, res) => {
         if (!name) {
             throw new Error("请输入查询名字");
         }
-        db.all("SELECT * FROM users where name = ?", [name], (err, rows) => {
+        db.all("SELECT * FROM usersInfo where name like ?", [`%${name}%`], (err, rows) => {
             if (err) {
                 console.log(err); // 如果出现错误就输出错误信息
                 throw new Error(err.message);
@@ -41,7 +49,7 @@ router.get("/getUser", (req, res) => {
             res.status(200).json({ code: 0, data: rows, msg: "success" });
         });
     } catch (error) {
-        res.status(400).json({ code: 1, data: "", msg: error });
+        res.status(400).json({ code: 1, data: "", msg: String(error) });
     }
 });
 
