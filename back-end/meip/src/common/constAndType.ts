@@ -1,6 +1,5 @@
 import { Request as ExpRequest, Response as ExpResponse } from "express";
 
-
 const WIKI_BASE_URL = "/open-apis/wiki/v2";
 const GET_WIKI_SON_NODE_LIST_URL = WIKI_BASE_URL + "/spaces/"; // 获取知识空间子节点列表
 const GET_WIKI_NODE_INFO_URL = WIKI_BASE_URL + "/spaces/get_node?token="; //获取空间节点信息
@@ -22,9 +21,9 @@ const GET_ACCESS_TOKEN_URL = "http://192.168.22.42:8001/feishu/get-token.php"; /
 const OPEN_FEISHU_BASE_URL = "https://open.feishu.cn/";
 
 const SPACE_ID_PROD = "7340956538574176260"; //线上生产环境SPACE_ID固定不变
-const SPACE_ID_DEV = '7157911317150875651' //"7197610230099296259"; //开发环境SPACE_ID
-const ACCESS_TOKEN = 't-g1045tn8JREJSP7XK4VYMXO2UX5K2MRKCFT4DM5H'; //临时令牌token 后期使用接口获取
-
+const SPACE_ID_DEV = "7157911317150875651"; //"7197610230099296259"; //开发环境SPACE_ID
+const ACCESS_TOKEN = "t-g1045v8PK4LUFOS7XQK6HXHAJ4J7M5GJS5RTUWYP"; //临时令牌token 后期使用接口获取
+const ACCESS_TOKEN_EXPIRATION = 3600; //ACCESS_TOKEN缓存时间
 
 enum EOBJ_TOKEN {
     doc = "doc",
@@ -57,9 +56,9 @@ type TWikiSonItems = {
 };
 
 type TSheetMetaInfo = {
-    titleName: string;//表格名-一般是是姓名
+    titleName: string; //表格名-一般是是姓名
     sheets: TMetaInfoItems[];
-}
+};
 
 //表格元数据Item
 type TMetaInfoItems = {
@@ -88,24 +87,28 @@ enum EABILITY_TYPE {
 
 type TAbilityEnumKeys = keyof typeof EABILITY_TYPE;
 
+//知识空间节点信息
+type TWikiNodeInfo = {
+    obj_token: string;
+    obj_type: string;
+    title: string;
+    node_token: string;
+};
+
 export {
     GET_WIKI_SON_NODE_LIST_URL,
-    GET_ACCESS_TOKEN_URL, 
+    GET_ACCESS_TOKEN_URL,
     SPACE_ID_DEV,
     ACCESS_TOKEN,
     OPEN_FEISHU_BASE_URL,
     GET_SHEET_METAINFO_URL,
-    ExpRequest, 
-    ExpResponse, 
+    ACCESS_TOKEN_EXPIRATION,
+    CREATE_WIKI_SPACE_NODE_URL,
+    ExpRequest,
+    ExpResponse,
     EOBJ_TOKEN,
     EReuqestMethods,
     EABILITY_TYPE,
 };
 
-export type {
-    TWikiSonItems,
-    TMetaInfoItems,
-    TValueRanges,
-    TSheetMetaInfo,
-    TAbilityEnumKeys,
-};
+export type { TWikiSonItems, TMetaInfoItems, TValueRanges, TSheetMetaInfo, TAbilityEnumKeys, TWikiNodeInfo };
